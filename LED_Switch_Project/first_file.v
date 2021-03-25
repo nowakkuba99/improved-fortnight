@@ -1,7 +1,7 @@
 module LED_Switching (
-    input Switch[9:0],
-    output Led[9:0]
+    input [9:0] Switch,
+    output [9:0] Led
 );
-assign Led[9:0] = Switch[9:0];
+assign Led = Switch;
     
 endmodule
