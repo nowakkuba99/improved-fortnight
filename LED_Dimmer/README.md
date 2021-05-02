@@ -6,7 +6,7 @@ Turn ON:	Press Up or Down
 Turn OFF:	Press both Up and Down
 
 Min level:	1
-Max level:	2
+Max level:	6
 
 Readnig switch states every 1 second
 
