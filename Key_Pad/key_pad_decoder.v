@@ -1,4 +1,5 @@
 //Jakub Nowak 2021 - 4x3 Key Pad decoder
+//
 //On press the number is saved in binary format and passed along
 //Available numbers: 1,2,3,4,5,6,7,8,9,0,* = 10,# = 11
 //i_name - input signal, o_name - output signal, r_name - register
