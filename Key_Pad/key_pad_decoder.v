@@ -10,7 +10,7 @@ module key_pad (
     output [3:0] o_digit
 );
 //Out value
-reg [3:0] r_out;
+reg [3:0] r_out = 4'b1111;
 reg [3:0] r_col;
 // Count register
 reg [17:0] r_count;
@@ -103,6 +103,7 @@ begin
 				end
 
 				r_count <= 18'b000000000000000000;
+				r_out <= 4'b1111;
 			end
 			// Add 1 to count
 			else begin
