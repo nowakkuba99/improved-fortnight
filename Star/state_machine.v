@@ -144,10 +144,43 @@ begin
     end
     S7:
     begin
-        if(i_pull == 1'b0&& i_grill_pos == 2'b01 && i_star_pos != 2'b01)
+        if(i_pull == 1'b0 && i_grill_pos == 2'b01 && i_star_pos != 2'b01)
         begin
             r_State <= S9;                              //Przejscie nr 23
         end
+        else
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b01 && i_star_pos == 2'b01)
+        begin
+            r_State <= S10;                             //Przejscie nr 24
+        end
+    end
+    S8:
+    begin
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b01 && i_star_pos == 2'b0)
+        begin
+            r_State <= S6;                              //Przejscie nr 26
+        end
+        else
+        if(i_press == 1'b0 && i_grill_pos == 2'b01 && i_star_pos != 2'b0)
+        begin
+            r_State <= S9;                              //Przejscie nr 27
+        end
+    end
+    S9:
+    begin
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b01)
+        begin
+            r_State <= S8;                              //Przejscie nr 29
+        end
+        else
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b01)
+        begin
+            r_State <= S7;                              //Przejscie nr 30
+        end
+    end
+    S10:
+    begin
+        
     end  
     endcase
 end
