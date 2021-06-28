@@ -54,85 +54,100 @@ begin
     begin
         if(i_grill_pos == 2'b0 && i_star_pos == 2'b0)
         begin
-            r_State <= S2;
+            r_State <= S2;                              //Przejscie nr 1
         end
         else
         if(i_grill_pos == 2'b10 && i_star_pos == 2'b0)
         begin
-            r_State <= S5;
+            r_State <= S5;                              //Przejscie nr 2
         end
         else
         if(i_grill_pos == 2'b01 && i_star_pos == 2'b0)
         begin
-            r_State <= S6;
+            r_State <= S6;                              //Przejscie nr 3
         end
         else
         if(i_grill_pos == 2'b01 && i_star_pos == 2'b10)
         begin
-            r_State <= S9;
+            r_State <= S9;                              //Przejscie nr 4
         end
         else
         if(i_grill_pos == 2'b01 && i_star_pos == 2'b01)
         begin
-            r_State <= S10;
+            r_State <= S10;                             //Przejscie nr 5
         end
         else
         if(i_grill_pos == 2'b10 && i_star_pos == 2'b01)
         begin
-            r_State <= S13;
+            r_State <= S13;                             //Przejscie nr 6
         end
         else
         if(i_grill_pos == 2'b0 && i_star_pos == 2'b01)
         begin
-            r_State <= S14;
+            r_State <= S14;                             //Przejscie nr 7
         end
     end
     S2:
     begin
         if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b0 && i_star_pos == 2'b0)
         begin
-            r_State <= S3;
+            r_State <= S3;                              //Przejscie nr 9
         end
     end
     S3:
     begin
         if(i_pull == 1'b0 && i_grill_pos != 2'b01 && i_star_pos == 2'b0)
         begin
-            r_State <= S5;
+            r_State <= S5;                              //Przejscie nr 11
         end
         else
         if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b01 && i_star_pos == 2'b0)
         begin
-            r_State <= S6;
+            r_State <= S6;                              //Przejscie nr 12
         end
     end
     S4:
     begin
         if(i_press == 1'b0 && i_grill_pos != 2'b0 && i_star_pos == 2'b0)
         begin
-            r_State <= S5;
+            r_State <= S5;                              //Przejscie nr 14
         end
         else
         if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b0 && i_star_pos == 2'b0)
         begin
-            r_State <= S2;
+            r_State <= S2;                              //Przejscie nr 15
         end
     end
     S5:
     begin
         if(i_pull == 1'b1 && i_press == 1'b0 && i_star_pos == 2'b0)
         begin
-            r_State <= S3;
+            r_State <= S3;                              //Przejscie nr 17
         end
         else
         if(i_pull == 1'b0 && i_press == 1'b1 && i_star_pos == 2'b0)
         begin
-            r_State <= S7;
+            r_State <= S4;                              //Przejscie nr 18  
         end
     end
     S6:
     begin
-        
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b01 && i_star_pos == 2'b0)
+        begin
+            r_State <= S4;                              //Przejscie nr 20
+        end
+        else
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b01 && i_star_pos == 2'b0)
+        begin
+            r_State <= S7;                              //Przejscie nr 21
+        end
+    end
+    S7:
+    begin
+        if(i_pull == 1'b0&& i_grill_pos == 2'b01 && i_star_pos != 2'b01)
+        begin
+            r_State <= S9;                              //Przejscie nr 23
+        end
     end  
     endcase
 end
