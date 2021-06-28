@@ -180,7 +180,58 @@ begin
     end
     S10:
     begin
-        
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b01 && i_star_pos == 2'b01)
+        begin
+            r_State <= S8;                              //Przejscie nr 32
+        end
+        else
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b01 && i_star_pos == 2'b01)
+        begin
+            r_State <= S11;                             //Przejscie nr 33
+        end
+    end
+    S11:
+    begin
+        if(i_pull == 1'b0 && i_grill_pos != 2'b0 && i_star_pos == 2'b01)
+        begin
+            r_State <= S13;                             //Przejscie nr 35
+        end
+        else
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_grill_pos == 2'b0 && i_star_pos == 2'b01)
+        begin
+            r_State <= S14;                             //Przejscie nr 36
+        end
+    end
+    S12:
+    begin
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b01 && i_star_pos == 2'b01)
+        begin
+            r_State <= S10;                             //Przejscie nr 38
+        end
+        else
+        if(i_press == 1'b0 && i_grill_pos != 2'b01 && i_star_pos == 2'b01)
+        begin
+            r_State <= S13;                             //Przejscie nr 39
+        end
+    end
+    S13:
+    begin
+        if(i_pull == 1'b1 && i_press == 1'b0&& i_star_pos == 2'b01)
+        begin
+            r_State <= S11;                             //Przejscie nr 41
+        end
+        else
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_star_pos == 2'b01)
+        begin
+            r_State <= S12;                             //Przejscie nr 42
+        end
+    end
+    S14:
+    begin
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b0 && i_star_pos == 2'b01)
+        begin
+            r_State <= S12;
+        end
     end  
     endcase
 end
