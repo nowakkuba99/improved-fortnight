@@ -106,7 +106,34 @@ begin
             r_State <= S6;
         end
     end
-         
+    S4:
+    begin
+        if(i_press == 1'b0 && i_grill_pos != 2'b0 && i_star_pos == 2'b0)
+        begin
+            r_State <= S5;
+        end
+        else
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_grill_pos == 2'b0 && i_star_pos == 2'b0)
+        begin
+            r_State <= S2;
+        end
+    end
+    S5:
+    begin
+        if(i_pull == 1'b1 && i_press == 1'b0 && i_star_pos == 2'b0)
+        begin
+            r_State <= S3;
+        end
+        else
+        if(i_pull == 1'b0 && i_press == 1'b1 && i_star_pos == 2'b0)
+        begin
+            r_State <= S7;
+        end
+    end
+    S6:
+    begin
+        
+    end  
     endcase
 end
 endmodule
