@@ -6,12 +6,12 @@ module Star_State_Machine (
     input i_pull,
     input [1:0] i_grill_pos,
     input [1:0] i_star_pos,
-    output [3:0] o_output,
+    output [3:0] o_output
 );
 //Current State
 reg [3:0] r_State;
 //Out value
-reg [3:0] r_out;
+reg [3:0] r_out;                //_ _ _ _ - Krokowy Przód, Krokowy Tył, Siłownik Przód, Siłownik tył
 
 //Avaiable States
 localparam S1 = 4'b0001;        //Inicjalizacja
