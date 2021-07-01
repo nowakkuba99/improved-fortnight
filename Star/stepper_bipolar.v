@@ -12,7 +12,7 @@ module stepper_driver (
     //output o_B,
     //output o_C,
     //output o_D,
-    output [3:0] o_Big,
+    output [3:0] o_Motor,
     output [1:0] o_pos
 );
 //Testowo okres pomiedzy krokami 1s - zegar 1Hz wchodzi
@@ -36,7 +36,7 @@ reg r_dir;
 //Enable
 reg r_en;
 //Output assignment
-assign o_Big = r_out;
+assign o_Motor = r_out;
 assign o_pos = r_pos;
 //Main hardware loop
 always @(posedge i_clk) 
