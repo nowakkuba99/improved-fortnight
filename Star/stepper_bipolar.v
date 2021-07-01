@@ -13,7 +13,7 @@ module stepper_driver (
     //output o_C,
     //output o_D,
     output [3:0] o_Big,
-    output o_pos
+    output [1:0] o_pos
 );
 //Testowo okres pomiedzy krokami 1s - zegar 1Hz wchodzi
 localparam Ts = 1;
@@ -30,7 +30,7 @@ reg [7:0] r_counter =0;
 reg [3:0] r_State = S1;
 //Out
 reg [3:0] r_out;
-reg r_pos;
+reg [1:0] r_pos;
 //Kierunek
 reg r_dir;
 //Enable
@@ -59,10 +59,20 @@ begin
         r_en <= 1'b0;         //Nieaktywny
     end
     //Sprawdzenie pozycji
+    if(r_counter == 0)
+    begin
+        r_pos <= 2'b00;
+    end
+    else
     if(r_counter == p_count_limit)
     begin
-        r_pos <=2;
+        r_pos <= 2'b01;
     end
+    else
+    begin
+        r_pos <= 2'b10;
+    end
+    //Ustawienie wyjść
     case (r_State)
         S1: r_out <= 4'b1100;
         S2: r_out <= 4'b0110;
@@ -70,18 +80,20 @@ begin
         S4: r_out <= 4'b1001;
     endcase
 
-    
+    //Głowny case
     case (r_State)
         S1:
         begin
             if(r_dir == 1'b1 && r_en == 1'b1)
             begin
                 r_State <=S2;
+                r_counter <= r_counter +1;
             end
             else
             if(r_dir == 1'b0 && r_en == 1'b1)
             begin
                 r_State <=S4;
+                r_counter <= r_counter -1;
             end
         end
 
@@ -90,11 +102,13 @@ begin
             if(r_dir == 1'b1 && r_en == 1'b1)
             begin
                 r_State <=S3;
+                r_counter <= r_counter +1;
             end
             else
             if(r_dir == 1'b0 && r_en == 1'b1)
             begin
                 r_State <=S1;
+                r_counter <= r_counter -1;
             end
         end
 
@@ -103,11 +117,13 @@ begin
             if(r_dir == 1'b1 && r_en == 1'b1)
             begin
                 r_State <=S4;
+                r_counter <= r_counter +1;
             end
             else
             if(r_dir == 1'b0 && r_en == 1'b1)
             begin
                 r_State <=S2;
+                r_counter <= r_counter -1;
             end
         end
 
@@ -116,11 +132,13 @@ begin
             if(r_dir == 1'b1 && r_en == 1'b1)
             begin
                 r_State <=S1;
+                r_counter <= r_counter +1;
             end
             else
             if(r_dir == 1'b0 && r_en == 1'b1)
             begin
                 r_State =S3;
+                r_counter <= r_counter -1;
             end
         end    
      
